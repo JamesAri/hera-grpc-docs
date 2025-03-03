@@ -1,0 +1,8 @@
+{
+  "label": "Zookeeper structure",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+	"description": "Description of the entities in Zookeeper. This section is intended for those developing their own clients."
+  }
+}

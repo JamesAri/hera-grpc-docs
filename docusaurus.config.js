@@ -10,6 +10,11 @@ import { themes as prismThemes } from "prism-react-renderer";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+	themes: ['@docusaurus/theme-mermaid'],
+	markdown: {
+		mermaid: true,
+	},
+
 	title: "Hera-GRPC",
 	tagline: "Hera on gRPC",
 	favicon: "img/favicon.ico",
@@ -45,9 +50,7 @@ const config = {
 				docs: {
 					routeBasePath: '/',
 					sidebarPath: "./sidebars.js",
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+					// editUrl: "",
 				},
 				blog: false,
 				theme: {
@@ -79,12 +82,16 @@ const config = {
 				},
 				items: [
 					{
+						type: 'docsVersionDropdown',
+					},
+					{
 						type: "docSidebar",
 						sidebarId: "tutorialSidebar",
 						position: "left",
-						label: "Usage",
+						label: "Introduction",
 					},
-					// { to: "/api", label: "Api", position: "left" },
+					{ to: "/category/usage", label: "Usage", position: "left" },
+					{ to: "/category/development", label: "Development", position: "left" },
 					{
 						href: "https://github.com/JamesAri/hera-grpc",
 						label: "GitHub",
@@ -133,7 +140,7 @@ const config = {
 						],
 					},
 				],
-				copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+				copyright: `Copyright © ${new Date().getFullYear()} Hera-GRPC.`,
 			},
 			prism: {
 				theme: prismThemes.github,

@@ -26,3 +26,15 @@ This is an info admonition.
 :::note
 This is a note admonition.
 :::
+
+
+```mermaid
+stateDiagram-v2
+    [*] --> Still
+    Still --> [*]
+
+    Still --> Moving
+    Moving --> Still
+    Moving --> Crash
+    Crash --> [*]
+```

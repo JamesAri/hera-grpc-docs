@@ -1,47 +1,32 @@
 ---
+slug: /
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Hera-GRPC is a library built around Node.js gRPC ([@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js)) for efficient data transfer between microservices in a distributed system **without the need of a centralized repository for protocol buffer files (gRPC IDL)**.
 
-## Getting Started
+Most current solutions for sharing proto files rely on centralized repositories, which do not support dynamic development (e.g. [Google APIs](https://github.com/googleapis/googleapis/tree/master/google)). This means that deploying a new gRPC service typically requires additional setup before it can be used.
 
-Get started by **creating a new site**.
+This library leverages the ability of Node.js gRPC’s support for [dynamically generating the code at runtime](https://grpc.io/docs/languages/node/basics/#example-code-and-setup).
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+The basic workflow is as follows:
 
-### What you'll need
+user will define a `route` along with:
+- service name
+- service handlers
+- service proto file
+- service load options (optional)
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+These concepts should be familiar to anyone working with gRPC and proto files. If you are new to gRPC, I highly recommend checking out some of the basic resources [here](./development/references.md).
 
-## Generate a new site
+Once defined, the service is registered within the distributed system and becomes callable by its `route` without the need to locate the service proto files.
 
-Generate a new Docusaurus site using the **classic template**.
+---
 
-The classic template will automatically be added to your project after you run the command:
+Hera-GRPC depends on [@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js). To access its utilities (such as Metadata, status, etc.), import it as follows:
 
-```bash
-npm init docusaurus@latest my-website classic
+```js
+const { grpc } = require('hera-grpc')
 ```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/iXXntro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
