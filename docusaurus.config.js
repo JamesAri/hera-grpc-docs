@@ -110,15 +110,6 @@ const config = {
 				style: "dark",
 				links: [
 					{
-						title: "Docs",
-						items: [
-							{
-								label: "Intro",
-								to: "/intro",
-							},
-						],
-					},
-					{
 						title: "Contact",
 						items: [
 							{
