@@ -5,7 +5,9 @@ sidebar_position: 2
 
 ### Event: `'registered'`
 
-Services registered to zookeeper, gRPC server is listening, everything should be ready to handle incoming requests. This event should always occur before `'connected'` event.
+- `boundPort`
+
+Services registered to zookeeper, gRPC server is listening, everything should be ready to handle incoming requests. This event should always occur before `'connected'` event. The listener callback is passed a single numeric argument which contains the `boundPort` when called.
 
 ### Event: `'connected'`
 
