@@ -35,13 +35,11 @@ const path = require('path')
 const { ServiceClient } = require('hera-grpc')
 
 const sc = new ServiceClient({
-	host: 'localhost',
-	port: 50051,
-	zk: 'zk://localhost:2181/hera-test',
+	zk: 'zk://localhost:2181/hera-grpc',
 })
 
 sc.registerService({
-	routes: '/example-1.0.0/dev~service_route/helloworld',
+	routes: '/example-1/dev~service_route/helloworld',
 	serviceName: 'my.package.v1.HelloWorld',
 	filename: path.join(__dirname, 'helloworld.proto'),
 	handlers: {
@@ -59,7 +57,7 @@ const run = async () => {
 run().catch(console.error)
 ```
 
-this will register the `HelloWorld` service for route `/example-1.0.0/dev~service_route/helloworld` and start the grpc server on `localhost:50051`.
+this will register the `HelloWorld` service for route `/example-1/dev~service_route/helloworld` and start the grpc server on available IPv4 public interface with random available port.
 
 :::info[Registered event]
 The service client will emit `registered` event when it's ready to handle requests - for more details check [events](./events).
@@ -67,7 +65,7 @@ The service client will emit `registered` event when it's ready to handle reques
 
 **Caller (client):**
 
-Client can now call the service by its route `/example-1.0.0/dev~service_route/helloworld`:
+Client can now call the service by its route `/example-1/dev~service_route/helloworld`:
 
 ```js title="caller.js"
 const { assert } = require('console')
@@ -76,14 +74,14 @@ const promisify = require('util').promisify
 const { ServiceClient } = require('hera-grpc')
 
 const sc = new ServiceClient({
-	zk: 'zk://localhost:2181/hera-test',
+	zk: 'zk://localhost:2181/hera-grpc',
 })
 
 const run = async () => {
 	await sc.connect()
 
 	// Get stub with the rpc methods for the specified route
-	const stub = await sc.getStub('/example-1.0.0/dev~service_route/helloworld')
+	const stub = await sc.getStub('/example-1/dev~service_route/helloworld')
 	stub.addOne = promisify(stub.addOne)
 
 	const request = { value: 41 }
@@ -105,7 +103,7 @@ Always make sure you close the client before terminating the process, so it can 
 
 This example shows how to call another service within a server rpc handler. You can access `getStub` from any handlers `Call` object.
 
-Lets modify the HelloWorld example from before, the previous service with route `/example-1.0.0/dev~service_route/helloworld` will become "lazy" and call another service to process the request:
+Lets modify the HelloWorld example from before, the previous service with route `/example-1/dev~service_route/helloworld` will become "lazy" and call another service to process the request:
 
 **Lazy Callee (server1):**
 
@@ -116,13 +114,11 @@ const promisify = require('util').promisify
 const { ServiceClient } = require('hera-grpc')
 
 const sc = new ServiceClient({
-	host: 'localhost',
-	port: 50052,
-	zk: 'zk://localhost:2181/hera-test',
+	zk: 'zk://localhost:2181/hera-grpc',
 })
 
 sc.registerService({
-	routes: '/example-1.0.0/dev~service_route/helloworld',
+	routes: '/example-1/dev~service_route/helloworld',
 	serviceName: 'my.package.v1.HelloWorld',
 	filename: path.join(__dirname, 'helloworld.proto'),
 	handlers: {
@@ -157,9 +153,7 @@ const path = require('path')
 const { ServiceClient } = require('hera-grpc')
 
 const sc = new ServiceClient({
-	host: 'localhost',
-	port: 50051,
-	zk: 'zk://localhost:2181/hera-test',
+	zk: 'zk://localhost:2181/hera-grpc',
 })
 
 sc.registerService({
@@ -203,13 +197,11 @@ const { ServiceClient } = require('hera-grpc')
 const poiHandlers = require('../../poi/handlers')
 
 const sc = new ServiceClient({
-	host: 'localhost',
-	port: 50051,
-	zk: 'zk://localhost:2181/hera-test',
+	zk: 'zk://localhost:2181/hera-grpc',
 })
 
 sc.registerService({
-	routes: '/example-1.0.0/dev~service_route/poi',
+	routes: '/example-1/dev~service_route/poi',
 	serviceName: 'RouteGuide',
 	handlers: poiHandlers,
 	filename: path.join(__dirname, '../../../proto/poi/poi.proto'),
@@ -229,7 +221,7 @@ const run = async () => {
 run().catch(console.error)
 ```
 
-this will register the poi service for route `/example-1.0.0/dev~service_route/poi` and start the grpc server on `localhost:50051`.
+this will register the poi service for route `/example-1/dev~service_route/poi` and start the grpc server on `localhost:50051`.
 
 **Caller (client):**
 
@@ -239,13 +231,13 @@ const { ServiceClient } = require('hera-grpc')
 const poiClient = require('../../poi/client')
 
 const sc = new ServiceClient({
-	zk: 'zk://localhost:2181/hera-test',
+	zk: 'zk://localhost:2181/hera-grpc',
 })
 
 const run = async () => {
 	await sc.connect()
 	// Get stub with the rpc methods for the specified route
-	const stub = await sc.getStub('/example-1.0.0/dev~service_route/poi')
+	const stub = await sc.getStub('/example-1/dev~service_route/poi')
 
 	// Client from the tutorial
 	await poiClient(stub)

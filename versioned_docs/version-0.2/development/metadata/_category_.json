@@ -1,8 +1,0 @@
-{
-  "label": "Metadata",
-  "position": 1,
-  "link": {
-    "type": "generated-index",
-	"description": "Information about the metadata provided/expected by the clients using this library."
-  }
-}
