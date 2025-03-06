@@ -10,7 +10,7 @@ For example to register `route` for the [`hera.internal.v1.JsonService`](#availa
 ```js
 // sc = ServiceClient instance
 sc.registerService({
-	routes: '/slechtaj-1.0.0/dev~service_route/json',
+	routes: '/slechtaj-1/dev~service_route/json',
 	serviceName: 'hera.internal.v1.JsonService',
 	handlers: {
 		jsonRpc: function (call, callback) {/** handle */}

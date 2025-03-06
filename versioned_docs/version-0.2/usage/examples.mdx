@@ -32,7 +32,7 @@ message Response {
 ```js title="callee.js"
 const path = require('path')
 
-const { ServiceClient } = require('@slechtaj/service-client')
+const { ServiceClient } = require('hera-grpc')
 
 const sc = new ServiceClient({
 	host: 'localhost',
@@ -73,7 +73,7 @@ Client can now call the service by its route `/example-1.0.0/dev~service_route/h
 const { assert } = require('console')
 const promisify = require('util').promisify
 
-const { ServiceClient } = require('@slechtaj/service-client')
+const { ServiceClient } = require('hera-grpc')
 
 const sc = new ServiceClient({
 	zk: 'zk://localhost:2181/hera-test',
@@ -113,7 +113,7 @@ Lets modify the HelloWorld example from before, the previous service with route 
 const path = require('path')
 const promisify = require('util').promisify
 
-const { ServiceClient } = require('@slechtaj/service-client')
+const { ServiceClient } = require('hera-grpc')
 
 const sc = new ServiceClient({
 	host: 'localhost',
@@ -154,7 +154,7 @@ The following service with route `/hardworking-service`  will actually perform t
 ```js title="callee-worker.js"
 const path = require('path')
 
-const { ServiceClient } = require('@slechtaj/service-client')
+const { ServiceClient } = require('hera-grpc')
 
 const sc = new ServiceClient({
 	host: 'localhost',
@@ -197,7 +197,7 @@ In this example, we will try to register and call the demo service from the [Nod
 ```js title="callee.js"
 const path = require('path')
 
-const { ServiceClient } = require('@slechtaj/service-client')
+const { ServiceClient } = require('hera-grpc')
 
 // Handlers from the POI service tutorial
 const poiHandlers = require('../../poi/handlers')
@@ -234,7 +234,7 @@ this will register the poi service for route `/example-1.0.0/dev~service_route/p
 **Caller (client):**
 
 ```js title="caller.js"
-const { ServiceClient } = require('@slechtaj/service-client')
+const { ServiceClient } = require('hera-grpc')
 
 const poiClient = require('../../poi/client')
 

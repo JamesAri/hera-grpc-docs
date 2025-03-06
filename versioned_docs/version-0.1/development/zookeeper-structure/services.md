@@ -33,7 +33,7 @@ The `RouteDetails` structure:
   "host": "192.168.1.38",
   "port": 50051,
   "routes": {
-    "/slechtaj-1.0.0/dev~service_route/chat": {
+    "/slechtaj-1/dev~service_route/chat": {
       "serviceName": "hera.chat.v1.ChatRoom",
       "protoZnode": "/proto/buffer0000003732",
       "loadOptions": {
@@ -44,7 +44,7 @@ The `RouteDetails` structure:
         "oneofs": true
       }
     },
-    "/slechtaj-1.0.0/dev~service_route/poi": {
+    "/slechtaj-1/dev~service_route/poi": {
       "serviceName": "RouteGuide",
       "protoZnode": "/proto/buffer0000003733",
       "loadOptions": {
@@ -55,15 +55,15 @@ The `RouteDetails` structure:
         "oneofs": true
       }
     },
-    "/slechtaj-1.0.0/dev~service_route/file_share": {
+    "/slechtaj-1/dev~service_route/file_share": {
       "serviceName": "hera.fileshare.v1.FileShare",
       "protoZnode": "/proto/buffer0000003734"
     },
-    "/slechtaj-1.0.0/dev~service_route/json": {
+    "/slechtaj-1/dev~service_route/json": {
       "serviceName": "hera.internal.v1.JsonService",
       "internal": true
     },
-    "/slechtaj-1.0.0/dev~service_route/simple_proxy": {
+    "/slechtaj-1/dev~service_route/simple_proxy": {
       "serviceName": "hera.proxy.v1.SimpleProxy",
       "protoZnode": "/proto/buffer0000003735",
       "loadOptions": {
