@@ -25,6 +25,12 @@ Once defined, the service is registered within the distributed system and become
 
 ---
 
+### Installation
+
+```shell
+npm install hera-grpc
+```
+
 Hera-GRPC depends on [@grpc/grpc-js](https://www.npmjs.com/package/@grpc/grpc-js). To access its utilities (such as `Metadata`, `status`, etc.), import it as follows:
 
 ```js
